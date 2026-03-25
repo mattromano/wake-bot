@@ -1,0 +1,25 @@
+#!/bin/bash
+# SleepWatcher hook — runs on every Mac wake event.
+# Triggers the launchd agent which has GUI/keychain context.
+
+echo "$(date): Wake event triggered" >> ~/.wakeup.log
+
+# Wait for Wi-Fi networking
+sleep 5
+for i in {1..12}; do
+  if ipconfig getifaddr en0 >/dev/null 2>&1; then break; fi
+  sleep 3
+done
+
+TMUX="$(command -v tmux || echo /opt/homebrew/bin/tmux)"
+
+# Skip if already running
+if $TMUX has-session -t claude 2>/dev/null; then
+  echo "$(date): Claude session already exists, skipping" >> ~/.wakeup.log
+  exit 0
+fi
+
+# Trigger the launchd agent (which has GUI/keychain context)
+touch ~/.claude-wake-trigger
+
+echo "$(date): Triggered claude remote-control" >> ~/.wakeup.log

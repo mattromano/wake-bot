@@ -1,0 +1,16 @@
+[Unit]
+Description=Discord Wake Bot
+After=network-online.target
+Wants=network-online.target
+
+[Service]
+Type=simple
+User=pi
+WorkingDirectory=/home/pi/wake-bot
+EnvironmentFile=/home/pi/wake-bot/.env
+ExecStart=/home/pi/wake-bot/venv/bin/python /home/pi/wake-bot/pi/wake_bot.py
+Restart=always
+RestartSec=10
+
+[Install]
+WantedBy=multi-user.target
