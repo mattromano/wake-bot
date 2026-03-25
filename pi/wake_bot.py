@@ -107,7 +107,7 @@ async def handle_wake(message):
     await message.channel.send("✅ Mac is online. Starting Claude remote-control...")
     await asyncio.to_thread(start_claude_remote)
     if await asyncio.to_thread(check_claude_session):
-        await message.channel.send("🎉 Claude remote-control is running! Connect at https://claude.ai/code")
+        await message.channel.send("🎉 Claude remote-control is running! Open the Claude Code app to connect.")
     else:
         await message.channel.send("⚠️ Remote-control may not have started. Check the Mac.")
 
@@ -138,7 +138,7 @@ async def handle_reset(message):
     await message.channel.send("🔄 Restarting Claude remote-control...")
     await asyncio.to_thread(start_claude_remote)
     if await asyncio.to_thread(check_claude_session):
-        await message.channel.send("🎉 Claude remote-control restarted! Connect at https://claude.ai/code")
+        await message.channel.send("🎉 Claude remote-control restarted! Open the Claude Code app to connect.")
     else:
         await message.channel.send("⚠️ Remote-control may not have started. Check the Mac.")
 

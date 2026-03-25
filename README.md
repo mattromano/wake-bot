@@ -78,7 +78,7 @@ DM "Wake Bot" on Discord:
 - `status` — should report Mac is awake, no Claude session
 - `sleep` — puts the Mac to sleep
 - `wake` — wakes the Mac, starts `claude remote-control`
-- Open [claude.ai/code](https://claude.ai/code) to connect
+- Open the Claude Code app to connect
 
 ## Commands
 
